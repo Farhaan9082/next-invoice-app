@@ -21,10 +21,12 @@ module.exports = {
         'light-purple': '#7c5dfa',
         'purple': '#1e2139',
         'dark-purple': '#141625',
+        'red': '#ec5757',
       },
     },
   },
   plugins: [
-    require('tailwind-scrollbar-hide')
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/forms'),
   ],
 }

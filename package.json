@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.2",
     "formik": "^2.2.9",
     "next": "latest",
     "react": "18.1.0",

@@ -1,4 +1,5 @@
 import Input from "./Input";
+import Select from "./Select";
 
 function FormFields() {
   return (
@@ -24,8 +25,11 @@ function FormFields() {
       </div>
 
       <div className="grid grid-cols-2 gap-x-5 mt-8">
-        <Input column='2' label="Invoice Date" name="invoiceDate" type="text" />
-        <Input column='2' label="Payment Terms" name="paymentTerms" type="text" />
+        <Input column='2' label="Invoice Date" name="invoiceDate" type="text" disabled />
+        <Select column='2' label="Payment Terms" name="paymentTerms">
+          <option value={30}>Net 30 Days</option>
+          <option value={60}>Net 60 Days</option>
+        </Select>
         <Input column='2' label="Description" name="productDescription" type="text" />
       </div>
     </div>

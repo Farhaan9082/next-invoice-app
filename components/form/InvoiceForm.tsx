@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
 import { initialValues } from "../../schema/Formdata";
 import FormFields from "./FormFields";
+import Button from "../shared/Button";
 
 function InvoiceForm() {
   const onSubmit = () => {};
@@ -14,6 +15,13 @@ function InvoiceForm() {
           <>
             <Form>
               <FormFields />
+              <div className="mt-6 flex justify-between">
+                <Button color="red">Cancel</Button>
+                <div>
+                  <Button color="purple" shifted>Draft</Button>
+                  <Button color="light-purple">Invoice</Button>
+                </div>
+              </div>
             </Form>
           </>
         )}
