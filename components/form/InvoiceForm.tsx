@@ -16,10 +16,10 @@ function InvoiceForm() {
             <Form>
               <FormFields />
               <div className="mt-6 flex justify-between">
-                <Button color="red">Cancel</Button>
+                <Button onClick={() => {}} className="bg-red" type="button">Cancel</Button>
                 <div>
-                  <Button color="purple" shifted>Draft</Button>
-                  <Button color="light-purple">Invoice</Button>
+                  <Button onClick={() => {}} className="bg-purple mr-2" type="button">Draft</Button>
+                  <Button onClick={() => {}} className="bg-light-purple" type="submit">Invoice</Button>
                 </div>
               </div>
             </Form>

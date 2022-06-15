@@ -2,17 +2,17 @@ import { useField } from "formik";
 
 interface input {
   label: string;
-  column: string;
+  className: string;
   name: string;
   type: string;
   disabled?: boolean;
 }
 
-function Input({ label, column, ...props }: input) {
+function Input({ label, className, ...props }: input) {
   const [field, meta] = useField(props);
 
   return (
-    <div className={`flex flex-col mt-4 col-span-${column}`}>
+    <div className={`${className} flex flex-col mt-4`}>
       <label className="text-white/70 font-normal text-md">{label}</label>
       <input
         className={`${

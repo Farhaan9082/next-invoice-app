@@ -1,15 +1,17 @@
+import { MouseEventHandler } from "react";
+
 interface button {
   children: any;
-  shifted?: boolean;
-  color: string;
+  className: string;
+  type: "button" | "submit" | "reset" | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function Button({ children, shifted, color }: button) {
+export default function Button({ children, className, ...props }: button) {
   return (
     <button
-      className={`${
-        shifted ? "mr-2" : ""
-      } bg-${color} px-5 py-2 rounded-full text-sm`}
+      className={`${className} px-5 py-2 rounded-full text-sm`}
+      {...props}
     >
       {children}
     </button>
