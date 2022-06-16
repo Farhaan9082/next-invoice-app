@@ -4,7 +4,9 @@ import FormFields from "./FormFields";
 import Button from "../shared/Button";
 
 function InvoiceForm() {
-  const onSubmit = () => {};
+  const onSubmit = (values: any) => {
+    console.log(values);
+  };
 
   return (
     <div className="mt-20">
@@ -19,7 +21,7 @@ function InvoiceForm() {
                 <Button onClick={() => {}} className="bg-red" type="button">Cancel</Button>
                 <div>
                   <Button onClick={() => {}} className="bg-purple mr-2" type="button">Draft</Button>
-                  <Button onClick={() => {}} className="bg-light-purple" type="submit">Invoice</Button>
+                  <Button className="bg-light-purple" type="submit">Invoice</Button>
                 </div>
               </div>
             </Form>

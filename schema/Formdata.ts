@@ -16,7 +16,7 @@ interface values {
   productDescription: string;
   invoicePending: number;
   invoiceDraft: number;
-  invoiceItemList: [];
+  items: [];
   invoiceTotal: number;
 }
 
@@ -48,12 +48,12 @@ export const initialValues: values = {
     "en-us",
     dateOptions
   ),
-  paymentTerms: "",
+  paymentTerms: "30",
   paymentDueDateUnix: new Date(),
   paymentDueDate: new Date(),
   productDescription: "",
   invoicePending: 0,
   invoiceDraft: 0,
-  invoiceItemList: [],
+  items: [],
   invoiceTotal: 0,
 };
