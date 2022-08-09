@@ -9,26 +9,33 @@ function InvoiceForm() {
   };
 
   return (
-    <div className="mt-20">
-      <h1 className="text-2xl font-semibold">New Invoice</h1>
-
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {(props) => (
-          <>
-            <Form>
-              <FormFields />
-              <div className="mt-6 flex justify-between">
-                <Button onClick={() => {}} className="bg-red" type="button">Cancel</Button>
-                <div>
-                  <Button onClick={() => {}} className="bg-purple mr-2" type="button">Draft</Button>
-                  <Button className="bg-light-purple" type="submit">Invoice</Button>
-                </div>
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      {(props) => (
+        <Form>
+          <div className="grid grid-rows-form h-form-height py-10 mt-10 md:h-screen md:mt-0 md:py-8">
+            <h1 className="text-3xl font-semibold">New Invoice</h1>
+            <FormFields />
+            <div className="mt-6 pb-4 flex justify-between md:pb-0">
+              <Button onClick={() => {}} className="bg-red" type="button">
+                Cancel
+              </Button>
+              <div>
+                <Button
+                  onClick={() => {}}
+                  className="bg-purple mr-2"
+                  type="button"
+                >
+                  Draft
+                </Button>
+                <Button className="bg-light-purple" type="submit">
+                  Invoice
+                </Button>
               </div>
-            </Form>
-          </>
-        )}
-      </Formik>
-    </div>
+            </div>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }
 

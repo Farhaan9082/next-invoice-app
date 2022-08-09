@@ -6,6 +6,6 @@
 
 @layer base {
     body {
-        @apply bg-dark-purple text-white font-body min-h-screen;
+        @apply bg-dark-purple text-white font-body;
     }
 }

@@ -9,12 +9,14 @@ function FormFields() {
   const { values }: any = useFormikContext();
 
   return (
-    <div className="mt-4 overflow-y-scroll max-h-80 scrollbar-hide">
-      <div className="grid grid-cols-2 gap-x-5">
-        <h3 className="text-light-purple col-span-2">Bill From</h3>
+    <div className="mt-4 overflow-y-scroll flex flex-col scrollbar-hide">
+      <div className="grid grid-cols-2 gap-x-5 md:grid-cols-3">
+        <h3 className="text-light-purple col-span-2 md:col-span-3 lg:text-lg">
+          Bill From
+        </h3>
 
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-3"
           label="Street Address"
           name="billerStreetAddress"
           type="text"
@@ -32,30 +34,32 @@ function FormFields() {
           type="text"
         />
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-1"
           label="Country"
           name="billerCountry"
           type="text"
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-x-5 mt-8">
-        <h3 className="text-light-purple col-span-2">Bill To</h3>
+      <div className="grid grid-cols-2 gap-x-5 mt-8 md:grid-cols-3">
+        <h3 className="text-light-purple col-span-2 md:col-span-3 lg:text-lg">
+          Bill To
+        </h3>
 
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-3"
           label="Client's Name"
           name="clientName"
           type="text"
         />
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-3"
           label="Client's Email"
           name="clientEmail"
           type="text"
         />
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-3"
           label="Street Address"
           name="clientStreetAddress"
           type="text"
@@ -73,7 +77,7 @@ function FormFields() {
           type="text"
         />
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-1"
           label="Country"
           name="clientCountry"
           type="text"
@@ -82,14 +86,14 @@ function FormFields() {
 
       <div className="grid grid-cols-2 gap-x-5 mt-8">
         <Input
-          className="col-span-2"
+          className="col-span-2 md:col-span-1"
           label="Invoice Date"
           name="invoiceDate"
           type="text"
           disabled
         />
         <Select
-          className="col-span-2"
+          className="col-span-2 md:col-span-1"
           label="Payment Terms"
           name="paymentTerms"
         >
@@ -126,7 +130,7 @@ function FormFields() {
                       total: 0,
                     })
                   }
-                  className="bg-purple w-full"
+                  className="bg-purple w-full mt-3"
                   type="button"
                 >
                   + Add New Item

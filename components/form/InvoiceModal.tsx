@@ -5,9 +5,9 @@ function InvoiceModal({ isOpen }: { isOpen: boolean }) {
     <div
       className={`${
         !isOpen ? `hidden` : ``
-      } absolute left-0 top-0 w-screen h-screen bg-dark-purple`}
+      } fixed left-0 top-0 w-screen h-full bg-dark-purple md:z-50 md:w-[35rem] md:border-r md:border-light-purple`}
     >
-      <div className="mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10">
+      <div className="mx-auto px-6 xs:px-8 md:px-10">
         <InvoiceForm />
       </div>
     </div>

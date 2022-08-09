@@ -23,6 +23,12 @@ module.exports = {
         'dark-purple': '#141625',
         'red': '#ec5757',
       },
+      gridTemplateRows: {
+        'form': 'min-content 1fr min-content',
+      },
+      height: {
+        'form-height': 'calc(100vh - 5rem)',
+      },
     },
   },
   plugins: [

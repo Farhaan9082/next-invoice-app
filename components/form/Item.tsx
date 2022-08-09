@@ -8,7 +8,8 @@ interface item {
 }
 
 function Item({ index, helpers }: item) {
-  const { values, setFieldValue }: {values: any, setFieldValue: any} = useFormikContext();
+  const { values, setFieldValue }: { values: any; setFieldValue: any } =
+    useFormikContext();
 
   useEffect(() => {
     const total = values.items[index].quantity * values.items[index].price;
@@ -17,7 +18,10 @@ function Item({ index, helpers }: item) {
   }, [values.items[index].quantity, values.items[index].price]);
 
   return (
-    <div key={index} className="grid grid-cols-2 gap-x-5 mt-2 mb-4">
+    <div
+      key={index}
+      className="grid grid-cols-2 gap-x-5 mt-2 mb-4 md:grid-cols-3"
+    >
       <Input
         className="col-span-2"
         label="Item Name"
