@@ -135,6 +135,11 @@ function FormFields() {
                 >
                   + Add New Item
                 </Button>
+                {values.items.length == 0 && (
+                  <p className="mt-3 text-red text-base">
+                    - An item must be added
+                  </p>
+                )}
               </div>
             </>
           )}

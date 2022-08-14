@@ -17,11 +17,18 @@ function Input({ label, className, ...props }: input) {
       <input
         className={`${
           props.disabled ? "text-white/70 bg-purple/60" : "bg-purple"
-        } mt-1 px-6 py-3 rounded border border-light-purple/10 focus:border-light-purple focus:outline-none focus:ring-0`}
+        } ${
+          meta.error && meta.touched
+            ? "border-red focus:border-red"
+            : "border-light-purple/10 focus:border-light-purple"
+        } mt-1 px-6 py-3 rounded border focus:outline-none focus:ring-0`}
         autoComplete="off"
         {...field}
         {...props}
       />
+      {meta.error && meta.touched && (
+        <p className="mt-2 text-red text-sm">{meta.error}</p>
+      )}
     </div>
   );
 }
