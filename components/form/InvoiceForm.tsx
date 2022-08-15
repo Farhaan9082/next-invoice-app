@@ -3,6 +3,7 @@ import { initialValues } from "../../schema/Formdata";
 import { validationSchema } from "../../schema/Validation";
 import FormFields from "./FormFields";
 import Button from "../shared/Button";
+import { GenerateInvoice } from "../../utilities/GenerateInvoice";
 
 interface invoiceForm {
   setIsOpen: any;
@@ -10,10 +11,19 @@ interface invoiceForm {
 }
 
 function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
-  const onSubmit = (values: any, props: any) => {
-    console.log(values);
+  function onSubmit(values: any, props: any) {
+    const newInvoice = GenerateInvoice(values, "pending");
+    console.log(newInvoice);
     props.resetForm();
-  };
+    setIsOpen((prev: boolean) => !prev);
+  }
+
+  function addDraft(props: any) {
+    const newInvoice = GenerateInvoice(props.values, "draft");
+    console.log(newInvoice);
+    props.resetForm();
+    setIsOpen((prev: boolean) => !prev);
+  }
 
   return (
     <Formik
@@ -39,7 +49,7 @@ function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
               </Button>
               <div>
                 <Button
-                  onClick={() => {}}
+                  onClick={() => addDraft(props)}
                   className="bg-purple mr-2"
                   type="button"
                 >

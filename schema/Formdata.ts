@@ -1,4 +1,4 @@
-interface values {
+export interface values {
   billerStreetAddress: string;
   billerCity: string;
   billerPinCode: string;
@@ -11,13 +11,8 @@ interface values {
   clientCountry: string;
   invoiceDate: string;
   paymentTerms: string;
-  paymentDueDateUnix: Date;
-  paymentDueDate: Date;
   productDescription: string;
-  invoicePending: number;
-  invoiceDraft: number;
   items: [];
-  invoiceTotal: number;
 }
 
 interface dateOptions {
@@ -49,11 +44,6 @@ export const initialValues: values = {
     dateOptions
   ),
   paymentTerms: "30",
-  paymentDueDateUnix: new Date(),
-  paymentDueDate: new Date(),
   productDescription: "",
-  invoicePending: 0,
-  invoiceDraft: 0,
   items: [],
-  invoiceTotal: 0,
 };
