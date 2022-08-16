@@ -6,13 +6,13 @@ interface dateOptions {
   day?: "numeric" | "2-digit";
 }
 
-export const dateOptions: dateOptions = {
+const dateOptions: dateOptions = {
   year: "numeric",
   month: "short",
   day: "numeric",
 };
 
-export const getDueDate = (paymentTerms: string) => {
+const getDueDate = (paymentTerms: string) => {
   const futureDate = new Date();
   const dueDateUnix = futureDate.setDate(
     futureDate.getDate() + parseInt(paymentTerms)
@@ -25,7 +25,7 @@ export const getDueDate = (paymentTerms: string) => {
   return dueDate;
 };
 
-export const getTotal = (items: any) => {
+const getTotal = (items: any) => {
   let total = 0;
   for (const item of items) {
     total += item.total;

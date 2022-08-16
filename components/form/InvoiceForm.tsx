@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { initialValues } from "../../schema/Formdata";
+import { initialValues, values } from "../../schema/Formdata";
 import { validationSchema } from "../../schema/Validation";
 import FormFields from "./FormFields";
 import Button from "../shared/Button";
@@ -11,9 +11,26 @@ interface invoiceForm {
 }
 
 function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
-  function onSubmit(values: any, props: any) {
+  async function addInvoice(invoice: any) {
+    try {
+      const res = await fetch("http://localhost:3000/api/invoice/create", {
+        body: JSON.stringify(invoice),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function onSubmit(values: values, props: any) {
     const newInvoice = GenerateInvoice(values, "pending");
-    console.log(newInvoice);
+    addInvoice(newInvoice);
     props.resetForm();
     setIsOpen((prev: boolean) => !prev);
   }
