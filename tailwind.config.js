@@ -22,6 +22,9 @@ module.exports = {
         'purple': '#1e2139',
         'dark-purple': '#141625',
         'red': '#ec5757',
+        'pending': '#FF8F00',
+        'paid': '#33D69F',
+        'draft': '#d4d4d4',
       },
       gridTemplateRows: {
         'form': 'min-content 1fr min-content',

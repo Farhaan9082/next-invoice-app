@@ -1,11 +1,20 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Navbar from "../components/home/Navbar";
 import Panel from "../components/home/Panel";
 import InvoiceModal from "../components/form/InvoiceModal";
 import { useState } from "react";
+import Invoice from "../components/home/Invoice";
 
-const Home: NextPage = () => {
+export interface invoice {
+  invoiceId: string;
+  dueDate: string;
+  clientName: string;
+  total: number;
+  invoiceStatus: string;
+}
+
+const Home: NextPage = ({ data }: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -20,9 +29,40 @@ const Home: NextPage = () => {
       <main className="max-w-2xl mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10 md:max-w-3xl">
         <Panel setIsOpen={setIsOpen} />
         <InvoiceModal setIsOpen={setIsOpen} isOpen={isOpen} />
+        <div className="grid grid-cols-1 gap-5 mt-5 mb-10">
+          {data.map(
+            ({
+              invoiceId,
+              dueDate,
+              clientName,
+              total,
+              invoiceStatus,
+            }: invoice) => (
+              <Invoice
+                key={invoiceId}
+                invoiceId={invoiceId}
+                dueDate={dueDate}
+                clientName={clientName}
+                total={total}
+                invoiceStatus={invoiceStatus}
+              />
+            )
+          )}
+        </div>
       </main>
     </div>
   );
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch("http://localhost:3000/api/invoice/read");
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};

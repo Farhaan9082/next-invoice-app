@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import { values } from "../schema/Formdata";
 
 interface dateOptions {
@@ -37,6 +38,7 @@ const getTotal = (items: any) => {
 export const GenerateInvoice = (values: values, status: string) => {
   return {
     ...values,
+    invoiceId: uid(6),
     invoiceStatus: status,
     dueDate: getDueDate(values.paymentTerms),
     total: getTotal(values.items),
