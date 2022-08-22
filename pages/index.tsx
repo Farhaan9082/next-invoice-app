@@ -12,6 +12,7 @@ export interface invoice {
   clientName: string;
   total: number;
   invoiceStatus: string;
+  href: string;
 }
 
 const Home: NextPage = ({ data }: any) => {
@@ -26,28 +27,31 @@ const Home: NextPage = ({ data }: any) => {
       <header>
         <Navbar />
       </header>
-      <main className="max-w-2xl mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10 md:max-w-3xl">
-        <Panel setIsOpen={setIsOpen} />
-        <InvoiceModal setIsOpen={setIsOpen} isOpen={isOpen} />
-        <div className="grid grid-cols-1 gap-5 mt-5 mb-10">
-          {data.map(
-            ({
-              invoiceId,
-              dueDate,
-              clientName,
-              total,
-              invoiceStatus,
-            }: invoice) => (
-              <Invoice
-                key={invoiceId}
-                invoiceId={invoiceId}
-                dueDate={dueDate}
-                clientName={clientName}
-                total={total}
-                invoiceStatus={invoiceStatus}
-              />
-            )
-          )}
+      <main className="w-full md:ml-20">
+        <div className="max-w-2xl mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10 md:max-w-3xl">
+          <Panel setIsOpen={setIsOpen} />
+          <InvoiceModal setIsOpen={setIsOpen} isOpen={isOpen} />
+          <div className="grid grid-cols-1 gap-5 mt-5 mb-10">
+            {data.map(
+              ({
+                invoiceId,
+                dueDate,
+                clientName,
+                total,
+                invoiceStatus,
+              }: invoice) => (
+                <Invoice
+                  key={invoiceId}
+                  invoiceId={invoiceId}
+                  dueDate={dueDate}
+                  clientName={clientName}
+                  total={total}
+                  invoiceStatus={invoiceStatus}
+                  href={`/invoice/${invoiceId}`}
+                />
+              )
+            )}
+          </div>
         </div>
       </main>
     </div>

@@ -5,6 +5,7 @@ import FormFields from "./FormFields";
 import Button from "../shared/Button";
 import { GenerateInvoice } from "../../utilities/GenerateInvoice";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 interface invoiceForm {
   setIsOpen: any;
@@ -13,6 +14,7 @@ interface invoiceForm {
 
 function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   async function addInvoice(invoice: any) {
     try {
@@ -37,6 +39,7 @@ function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
     await addInvoice(newInvoice);
     props.resetForm();
     setIsOpen((prev: boolean) => !prev);
+    router.replace(router.asPath);
     setIsLoading(false);
   }
 
@@ -46,6 +49,7 @@ function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
     await addInvoice(newInvoice);
     props.resetForm();
     setIsOpen((prev: boolean) => !prev);
+    router.replace(router.asPath);
     setIsLoading(false);
   }
 
