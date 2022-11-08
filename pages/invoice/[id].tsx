@@ -242,7 +242,9 @@ export default invoice;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
-  const res = await fetch(`http://localhost:3000/api/invoice/read/${id}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/invoice/read/${id}`
+  );
   const data = await res.json();
 
   return {

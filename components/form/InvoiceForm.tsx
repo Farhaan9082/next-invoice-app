@@ -18,13 +18,16 @@ function InvoiceForm({ setIsOpen, isOpen }: invoiceForm) {
 
   async function addInvoice(invoice: any) {
     try {
-      const res = await fetch("http://localhost:3000/api/invoice/create", {
-        body: JSON.stringify(invoice),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_URL}/api/invoice/create`,
+        {
+          body: JSON.stringify(invoice),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        }
+      );
 
       const data = await res.json();
       console.log(data);

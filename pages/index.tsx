@@ -65,7 +65,9 @@ const Home: NextPage = ({ data }: any) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/invoice/read");
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/invoice/read`
+  );
   const data = await res.json();
   console.log(data);
 
