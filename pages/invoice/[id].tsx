@@ -1,18 +1,25 @@
+import { deleteDoc, doc } from "firebase/firestore";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InvoiceModal from "../../components/form/InvoiceModal";
 import Navbar from "../../components/home/Navbar";
 import Button from "../../components/shared/Button";
 import Status from "../../components/shared/Status";
+import { database } from "../../firebase/clientApp";
 
 const invoice: NextPage = ({ data, id }: any) => {
   const titleId = id?.toString().toUpperCase();
   const [invoiceData, setInvoiceData] = useState(data[0]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
+
+  const deleteInvoice = async () => {
+    await deleteDoc(doc(database, "invoices", id));
+    router.push("/");
+  };
 
   return (
     <div className="md:flex">
@@ -62,7 +69,7 @@ const invoice: NextPage = ({ data, id }: any) => {
               >
                 Edit
               </Button>
-              <Button onClick={() => {}} className="bg-red" type="button">
+              <Button onClick={deleteInvoice} className="bg-red" type="button">
                 Delete
               </Button>
               <Button className="bg-light-purple" type="button">
