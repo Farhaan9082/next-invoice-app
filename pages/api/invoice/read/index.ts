@@ -8,8 +8,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     try {
-      const db = collection(database, "invoices");
-      const invoiceSnapshot = await getDocs(db);
+      const invoiceSnapshot = await getDocs(collection(database, "invoices"));
       const invoiceData = invoiceSnapshot.docs.map((doc) => doc.data());
       res.status(200).json(invoiceData);
     } catch (error) {

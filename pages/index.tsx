@@ -27,10 +27,14 @@ const Home: NextPage = ({ data }: any) => {
       <header>
         <Navbar />
       </header>
-      <main className="w-full md:ml-20">
+      <main className="w-full md:ml-20 mt-20 md:mt-0">
         <div className="max-w-2xl mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10 md:max-w-3xl">
           <Panel setIsOpen={setIsOpen} />
-          <InvoiceModal setIsOpen={setIsOpen} isOpen={isOpen} />
+          <InvoiceModal
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            formType="InvoiceForm"
+          />
           <div className="grid grid-cols-1 gap-5 mt-5 mb-10">
             {data.map(
               ({
@@ -63,6 +67,7 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/invoice/read");
   const data = await res.json();
+  console.log(data);
 
   return {
     props: {

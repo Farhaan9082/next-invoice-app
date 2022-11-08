@@ -21,7 +21,7 @@ export default function Status({ invoiceStatus }: status) {
 
   return (
     <div
-      className={`${bgColor} w-28 my-2 rounded-md flex justify-center items-center md:my-0 md:py-2`}
+      className={`${bgColor} w-28 h-10 my-2 rounded-md flex justify-center items-center md:my-0 md:py-2`}
     >
       <span className={`${circleColor} rounded-full w-2 h-2 mr-2`}></span>
       <h1 className={`${textColor} font-semibold capitalize`}>

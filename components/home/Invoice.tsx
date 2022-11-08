@@ -31,7 +31,7 @@ function Invoice({
               </h2>
               <h1 className="font-semibold text-xl mt-1">
                 <span className="mr-1">₹</span>
-                {total.toLocaleString()}
+                {total}
               </h1>
             </div>
             <Status invoiceStatus={invoiceStatus} />
@@ -52,7 +52,7 @@ function Invoice({
             </h2>
             <h1 className="font-semibold text-xl mt-1">
               <span className="mr-1">₹</span>
-              {total.toLocaleString()}
+              {total}
             </h1>
             <div className="flex gap-3 items-center">
               <Status invoiceStatus={invoiceStatus} />
