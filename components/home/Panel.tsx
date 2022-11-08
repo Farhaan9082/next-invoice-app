@@ -1,6 +1,6 @@
 import Window from "../../utilities/Window";
 
-function Panel({ setIsOpen }: any) {
+function Panel({ setIsOpen, invoiceCount }: any) {
   const width: number | undefined = Window();
 
   return (
@@ -9,7 +9,9 @@ function Panel({ setIsOpen }: any) {
         <h1 className="text-2xl font-semibold xs:text-3xl sm:text-4xl">
           Invoices
         </h1>
-        <h2 className="text-white/50 font-normal">7 invoices</h2>
+        <h2 className="text-white/50 font-normal">
+          {invoiceCount > 0 ? invoiceCount : 0} invoices
+        </h2>
       </div>
       <div className="flex">
         <div className="flex self-center items-center cursor-pointer h-6 mr-3 xs:mr-5 sm:mr-7">

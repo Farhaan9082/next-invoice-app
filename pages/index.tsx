@@ -29,7 +29,7 @@ const Home: NextPage = ({ data }: any) => {
       </header>
       <main className="w-full md:ml-20 mt-20 md:mt-0">
         <div className="max-w-2xl mx-auto flex-grow flex-col px-6 xs:px-8 md:px-10 md:max-w-3xl">
-          <Panel setIsOpen={setIsOpen} />
+          <Panel setIsOpen={setIsOpen} invoiceCount={data.length} />
           <InvoiceModal
             setIsOpen={setIsOpen}
             isOpen={isOpen}
