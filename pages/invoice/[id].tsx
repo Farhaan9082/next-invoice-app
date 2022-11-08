@@ -1,4 +1,4 @@
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -18,6 +18,13 @@ const invoice: NextPage = ({ data, id }: any) => {
 
   const deleteInvoice = async () => {
     await deleteDoc(doc(database, "invoices", id));
+    router.push("/");
+  };
+
+  const updateStatus = async () => {
+    await updateDoc(doc(database, "invoices", id), {
+      invoiceStatus: "paid",
+    });
     router.push("/");
   };
 
@@ -72,9 +79,15 @@ const invoice: NextPage = ({ data, id }: any) => {
               <Button onClick={deleteInvoice} className="bg-red" type="button">
                 Delete
               </Button>
-              <Button className="bg-light-purple" type="button">
-                Mark As Paid
-              </Button>
+              {invoiceData.invoiceStatus !== "paid" && (
+                <Button
+                  onClick={updateStatus}
+                  className="bg-light-purple"
+                  type="button"
+                >
+                  Mark As Paid
+                </Button>
+              )}
             </div>
           </div>
           <div className="w-full px-5 py-4 bg-purple mt-5 rounded-md md:px-7 md:py-5 md:mt-6">
@@ -206,12 +219,18 @@ const invoice: NextPage = ({ data, id }: any) => {
             >
               Edit
             </Button>
-            <Button onClick={() => {}} className="bg-red" type="button">
+            <Button onClick={deleteInvoice} className="bg-red" type="button">
               Delete
             </Button>
-            <Button className="bg-light-purple" type="button">
-              Mark As Paid
-            </Button>
+            {invoiceData.invoiceStatus !== "paid" && (
+              <Button
+                onClick={updateStatus}
+                className="bg-light-purple"
+                type="button"
+              >
+                Mark As Paid
+              </Button>
+            )}
           </div>
         </div>
       </main>
